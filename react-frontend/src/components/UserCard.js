@@ -4,6 +4,9 @@ const UserCard = ({ userId }) => {
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [updatedName, setUpdatedName] = useState('');
+  const [updatedEmail, setUpdatedEmail] = useState('');
+  const [updatedPhone, setUpdatedPhone] = useState('');
+
 
   useEffect(() => {
     // Fetch user details from the API endpoint
@@ -14,7 +17,6 @@ const UserCard = ({ userId }) => {
       })
       .catch((error) => {
         console.error('Error:', error);
-        // Handle the error if needed
       });
   }, [userId]);
 
@@ -43,22 +45,27 @@ const UserCard = ({ userId }) => {
       body: JSON.stringify(
         { name: updatedName,
          email :updatedEmail,
-         
-        
-        
+         phone :updatedPhone      
         }
         ),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data);
+        setIsEditing(false)
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   };
-  const handleInputChange = (event) => {
+  const handleNameChange = (event) => {
     setUpdatedName(event.target.value)
+  }
+  const handleEmailChange = (event) => {
+    setUpdatedEmail(event.target.value)
+  }
+  const handlePhoneChange = (event) => {
+    setUpdatedPhone(event.target.value)
   }
 
   if (!user) {
@@ -67,9 +74,15 @@ const UserCard = ({ userId }) => {
 
   return (
     <div>
-         {isEditing ? (
+      {isEditing ? (
         <div>
-          <input type="text" value={updatedName} onChange={handleInputChange} />
+          <label >Name</label>
+          <input type="text" value={updatedName} onChange={handleNameChange} />
+          <label >Email</label>
+          <input type="text" value={updatedEmail} onChange={handleEmailChange} />
+          <label >Phone</label>
+          <input type="text" value={updatedPhone} onChange={handlePhoneChange} />
+  
           <button onClick={handleUpdate}>Save</button>
         </div>
       ) : (
@@ -78,16 +91,11 @@ const UserCard = ({ userId }) => {
           <p>Email: {user.email}</p>
           <p>Phone: {user.phone}</p>
           <button onClick={() => setIsEditing(true)}>Update</button>
+          <button onClick={handleDelete}>Delete</button>
         </div>
       )}
-    
-      <h2>{user.name}</h2>
-      <p>Email: {user.email}</p>
-      <p>Phone: {user.phone}</p>
-      <button onClick={handleDelete}>Delete</button>
-      <button onClick={handleUpdate}>Update</button>
     </div>
   );
-};
+      }
 
-export default UserCard;
+export default UserCard

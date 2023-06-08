@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 
 const NewUser = () => {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('')
 
   const handleNameChange = (event) => {
     setName(event.target.value);
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -16,12 +24,15 @@ const NewUser = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name }),
+      body: JSON.stringify({ name, email, phone }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data);
-        // Do something with the response data if needed
+
+        setName('');
+        setEmail('');
+        setPhone('');
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -36,10 +47,12 @@ const NewUser = () => {
     <div className='add-new-user'>
     <h2>Add new user</h2>
     <form onSubmit={handleSubmit}>
-      <label>
-        Name:
+      <label>Name:</label>
         <input type="text" value={name} onChange={handleNameChange} />
-      </label>
+        <label>Email:</label>
+        <input type="email" value={email} onChange={handleEmailChange} />
+        <label>Phone:</label>
+        <input type="integer" value={phone} onChange={handlePhoneChange} />
       <button type="submit">Submit</button>
     </form>
     </div>
