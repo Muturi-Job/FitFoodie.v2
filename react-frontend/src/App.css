@@ -1,180 +1,231 @@
-/* styles.css */
-
 body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
   color: #606C38;
-  margin: 0; /* Added */
-  padding: 0; /* Added */
-}
-
-.navbar {
+  }
+  
+  /* Navbar */
+  .navbar {
   background-color: #606C38;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   width: 100%;
-}
-
-.nav-header {
+  }
+  
+  .nav-header {
   color: #DDA15E;
   font-weight: bold;
   width: 50%;
-}
-
-.nav-links {
+  }
+  
+  .nav-links {
   display: flex;
   justify-content: flex-end;
   width: 50%;
-}
-
-.navbar-contents {
+  }
+  
+  .navbar-contents {
   color: white;
   text-decoration: none;
   margin: 0 10px;
   position: relative;
   text-align: center;
   flex: 1;
-}
-
-.navbar-contents:hover {
-  color: red;
-}
-
-.navbar-contents:hover::after {
+  transition: color 0.3s;
+  font-size: 18px;
+  }
+  
+  .navbar-contents:hover {
+  color: #DDA15E;
+  }
+  
+  .navbar-contents:hover::after {
   content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: red;
-}
-
-/* ExerciseList component */
-.exercise-list {
+  background-color: #DDA15E;
+  }
+  
+  /* ExerciseList component */
+  .exercise-list {
   margin: 20px;
-}
-
-/* ExerciseCard component */
-.exercise-card {
+  }
+  
+  /* ExerciseCard component */
+  .exercise-card {
   border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 10px;
-}
-
-.exercise-card h2 {
-  font-size: 20px;
+  }
+  
+  .exercise-card h2 {
+  font-size: 24px;
   margin-bottom: 10px;
-}
-
-.exercise-card p {
+  }
+  
+  .exercise-card p {
   margin-bottom: 5px;
-}
-
-.exercise-card button {
+  }
+  
+  .exercise-card button {
   margin-right: 10px;
-}
-
-/* Home component */
-.home-container {
+  padding: 8px 16px;
+  background-color: #606C38;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  }
+  
+  .exercise-card button:hover {
+  background-color: #DDA15E;
+  }
+  
+  /* Home component */
+  .home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  min-height: 100vh; /* Added */
-}
-
-.container {
+  min-height: 100vh;
+  }
+  
+  .container {
   max-width: 800px;
   margin-bottom: 20px;
   color: #606C38;
-  width: 100%; /* Added */
-  padding: 0 20px; /* Added */
-}
-
-.container h3 {
+  width: 100%;
+  padding: 0 20px;
+  }
+  
+  .container h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  }
+  
+  .container p {
+  margin-bottom: 10px;
+  font-size: 16px;
+  }
+  
+  /* NewExercise component */
+  .add-new-exercise {
+  margin: 20px;
+  }
+  
+  .add-new-exercise h2 {
   font-size: 24px;
   margin-bottom: 10px;
-}
-
-.container p {
-  margin-bottom: 5px;
-}
-
-/* NewExercise component */
-.add-new-exercise {
-  margin: 20px;
-}
-
-.add-new-exercise h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.add-new-exercise form {
+  }
+  
+  .add-new-exercise form {
   display: flex;
   flex-direction: column;
   max-width: 400px;
-}
-
-.add-new-exercise label {
+  }
+  
+  .add-new-exercise label {
   margin-bottom: 5px;
-}
-
-.add-new-exercise input {
+  font-size: 18px;
+  }
+  
+  .add-new-exercise input {
   margin-bottom: 10px;
-  padding: 5px;
-}
-
-.add-new-exercise button {
-  padding: 5px 10px;
-}
-
-/* NewUser component */
-.add-new-user {
+  padding: 8px;
+  font-size: 16px;
+  }
+  
+  .add-new-exercise button {
+  padding: 8px 16px;
+  background-color: #606C38;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  }
+  
+  .add-new-exercise button:hover {
+  background-color: #DDA15E;
+  }
+  
+  /* NewUser component */
+  .add-new-user {
   margin: 20px;
-}
-
-.add-new-user h2 {
-  font-size: 20px;
+  }
+  
+  .add-new-user h2 {
+  font-size: 24px;
   margin-bottom: 10px;
-}
-
-.add-new-user form {
+  }
+  
+  .add-new-user form {
   display: flex;
   flex-direction: column;
   max-width: 400px;
-}
-
-.add-new-user label {
+  }
+  
+  .add-new-user label {
   margin-bottom: 5px;
-}
-
-.add-new-user input {
+  font-size: 18px;
+  }
+  
+  .add-new-user input {
   margin-bottom: 10px;
-  padding: 5px;
-}
-
-.add-new-user button {
-  padding: 5px 10px;
-}
-
-/* UserCard component */
-.user-card {
+  padding: 8px;
+  font-size: 16px;
+  }
+  
+  .add-new-user button {
+  padding: 8px 16px;
+  background-color: #606C38;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  }
+  
+  .add-new-user button:hover {
+  background-color: #DDA15E;
+  }
+  
+  /* UserCard component */
+  .user-card {
   border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 10px;
-}
-
-.user-card h2 {
-  font-size: 20px;
+  }
+  
+  .user-card h2 {
+  font-size: 24px;
   margin-bottom: 10px;
-}
-
-.user-card p {
+  }
+  
+  .user-card p {
   margin-bottom: 5px;
-}
-
-.user-card button {
+  }
+  
+  .user-card button {
   margin-right: 10px;
-}
+  padding: 8px 16px;
+  background-color: #606C38;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  }
+  
+  .user-card button:hover {
+  background-color: #DDA15E;
+  }
