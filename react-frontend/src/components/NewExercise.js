@@ -69,6 +69,9 @@ const NewExercise = () => {
                 <input type="text" value={reps} onChange={handleRepsChange} />
                 <label >Rest</label>
                 <input type="text" value={rest} onChange={handleRestChange} />
+                <label >Rest</label>
+                <input type="text" value={rest} onChange={handleRestChange} />
+                <button type='submit'>Submit</button>
             </form>
         </div>
       )

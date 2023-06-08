@@ -7,13 +7,14 @@ const UserCard = ({ userId }) => {
   const [updatedEmail, setUpdatedEmail] = useState('');
   const [updatedPhone, setUpdatedPhone] = useState('');
 
-
   useEffect(() => {
-    // Fetch user details from the API endpoint
     fetch(`http://localhost:9292/users/${userId}`)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         setUser(data);
+        setUpdatedName(data.name);
+        setUpdatedEmail(data.email);
+        setUpdatedPhone(data.phone);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -21,7 +22,6 @@ const UserCard = ({ userId }) => {
   }, [userId]);
 
   const handleDelete = () => {
-    // Send a DELETE request to the API endpoint
     fetch(`http://localhost:9292/users/${userId}`, {
       method: 'DELETE',
     })
@@ -34,39 +34,47 @@ const UserCard = ({ userId }) => {
       });
   };
 
-  //Updating a users details
-
   const handleUpdate = () => {
     fetch(`http://localhost:9292/users/${userId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(
-        { name: updatedName,
-         email :updatedEmail,
-         phone :updatedPhone      
-        }
-        ),
+      body: JSON.stringify({
+        name: updatedName,
+        email: updatedEmail,
+        phone: updatedPhone
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data);
-        setIsEditing(false)
+        setIsEditing(false);
+        
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   };
+
+  const handleCancelUpdate = () => {
+    setUpdatedName(user.name);
+    setUpdatedEmail(user.email);
+    setUpdatedPhone(user.phone);
+    setIsEditing(false);
+  };
+
   const handleNameChange = (event) => {
-    setUpdatedName(event.target.value)
-  }
+    setUpdatedName(event.target.value);
+  };
+
   const handleEmailChange = (event) => {
-    setUpdatedEmail(event.target.value)
-  }
+    setUpdatedEmail(event.target.value);
+  };
+
   const handlePhoneChange = (event) => {
-    setUpdatedPhone(event.target.value)
-  }
+    setUpdatedPhone(event.target.value);
+  };
 
   if (!user) {
     return <div>Loading...</div>;
@@ -76,14 +84,15 @@ const UserCard = ({ userId }) => {
     <div>
       {isEditing ? (
         <div>
-          <label >Name</label>
+          <label>Name</label>
           <input type="text" value={updatedName} onChange={handleNameChange} />
-          <label >Email</label>
+          <label>Email</label>
           <input type="text" value={updatedEmail} onChange={handleEmailChange} />
-          <label >Phone</label>
+          <label>Phone</label>
           <input type="text" value={updatedPhone} onChange={handlePhoneChange} />
-  
+
           <button onClick={handleUpdate}>Save</button>
+          <button onClick={handleCancelUpdate}>Cancel</button>
         </div>
       ) : (
         <div>
@@ -96,6 +105,6 @@ const UserCard = ({ userId }) => {
       )}
     </div>
   );
-      }
+};
 
-export default UserCard
+export default UserCard;

@@ -75,8 +75,11 @@ end
 patch '/users/:id' do
   user = User.find(params[:id])
   user.update(
-    name: params[:name]
+    name: params[:name],
+    email: params[:email],
+    phone: params[:phone]
   )
+  user.to_json
 end
 
 end
