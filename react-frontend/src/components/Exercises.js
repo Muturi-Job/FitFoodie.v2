@@ -24,7 +24,7 @@ export default function Exercises() {
     <>
     <NewExercise />
     <div>
-      <h1>Exercises List</h1>
+      <h4>EXERCISES LIST</h4>
       <ExerciseList exercises={exercises} />
     </div>
     </>

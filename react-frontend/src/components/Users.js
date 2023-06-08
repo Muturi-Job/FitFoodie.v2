@@ -19,10 +19,10 @@ export default function Users() {
 
 
   return (
-    <>
+    < >
     <NewUser/>
     <div>
-      <h1>User List</h1>
+      <h4 className='user-list-title'>USER LIST</h4>
       <UserList users={users} />
     </div>    
     </>

@@ -81,7 +81,7 @@ const UserCard = ({ userId }) => {
   }
 
   return (
-    <div>
+    <div className='user-card'>
       {isEditing ? (
         <div>
           <label>Name</label>

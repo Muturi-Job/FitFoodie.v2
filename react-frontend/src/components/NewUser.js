@@ -45,7 +45,7 @@ const NewUser = () => {
 
   return (
     <div className='add-new-user'>
-    <h2>Add new user</h2>
+    <h2>ADD NEW USER</h2>
     <form onSubmit={handleSubmit}>
       <label>Name:</label>
         <input type="text" value={name} onChange={handleNameChange} />

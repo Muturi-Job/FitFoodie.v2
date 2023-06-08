@@ -98,9 +98,9 @@ const ExerciseCard = ({ exerciseId }) => {
   }
 
   return (
-    <div>
+    <div className='exercise-card'>
       {isEditing ? (
-        <div>
+        <div c>
           <label>Name</label>
           <input type="text" value={updatedName} onChange={handleNameChange} />
           <label>Weight</label>
@@ -127,8 +127,8 @@ const ExerciseCard = ({ exerciseId }) => {
           <p>Rest: {exercise.rest}</p>
           <p>User ID: {exercise.user_id}</p>
 
-          <button onClick={() => setIsEditing(true)}>Update</button>
-          <button onClick={handleDelete}>Delete</button>
+          <button className='button' onClick={() => setIsEditing(true)}>Update</button>
+          <button className='button'  onClick={handleDelete}>Delete</button>
         </div>
       )}
     </div>
