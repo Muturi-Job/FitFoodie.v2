@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const NewUser = () => {
+const NewUser = ({users, setUsers}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('')
@@ -29,6 +29,7 @@ const NewUser = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data);
+        setUsers([...users, data]);
 
         setName('');
         setEmail('');

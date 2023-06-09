@@ -20,10 +20,10 @@ export default function Users() {
 
   return (
     < >
-    <NewUser/>
+    <NewUser users={users} setUsers={setUsers}/>
     <div>
       <h4 className='user-list-title'>USER LIST</h4>
-      <UserList users={users} />
+      <UserList users={users} setUsers={setUsers} />
     </div>    
     </>
   )

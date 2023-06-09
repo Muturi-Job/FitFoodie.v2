@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const UserCard = ({ userId }) => {
+const UserCard = ({ userId ,users, setUsers}) => {
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [updatedName, setUpdatedName] = useState('');
@@ -31,6 +31,8 @@ const UserCard = ({ userId }) => {
       })
       .catch((error) => {
         console.error('Error:', error);
+        setUsers(users.filter((user) => user.id !== userId));
+
       });
   };
 
@@ -49,6 +51,7 @@ const UserCard = ({ userId }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data);
+        window.location.reload()
         setIsEditing(false);
         
       })
